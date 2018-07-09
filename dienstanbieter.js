@@ -7,12 +7,17 @@ var client = require('redis').createClient(process.env.REDIS_URL);
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
 
-var app = express.Router();
+var app = express();
 var bodyParser = require ('body-parser');
 
 app.use(bodyParser.json());
 
-app.set('port', process.env.PORT || 3000);
+//app.set('port', process.env.PORT || 3000);
+
+
+const settings = {
+    port: process.env.PORT || 3000
+};
 
 app.get('/', function(req,res){
 
@@ -194,6 +199,6 @@ client.on('error' , function (err){
   process.exit(1);
 });
 
-app.listen(app.get('port'), function(){
-  console.log('Server is running on port ' + app.get('port'));
+app.listen(settings.port, function(){
+  console.log("Server is running on port " + settings.port + ".");
 });
