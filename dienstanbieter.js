@@ -90,7 +90,7 @@ var id = req.params.id;
 
 client.get('User ' + id, function(req, res){
   if(rep){
-    res.type('json').send)(rep);
+    res.type('json').send(rep);
   }else{
     res.status(404).type('text').send('Der User mit der ID ' + id + ' existiert nicht.');
   }
