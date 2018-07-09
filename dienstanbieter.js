@@ -7,7 +7,7 @@ var client = require('redis').createClient(process.env.REDIS_URL);
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
 
-var app = express();
+var app = express.Router();
 var bodyParser = require ('body-parser');
 
 app.use(bodyParser.json());
