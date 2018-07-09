@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var redis = require('redis');
 
-//var client = redis.createClient();
+var client = redis.createClient();
 var app = express();
 
 //Settings for given Port
