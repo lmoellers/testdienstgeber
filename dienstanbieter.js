@@ -1,7 +1,11 @@
 var express = require ('express');
-var redis = require ('redis');
-var client = redis.createClient();
-var util = require ('util');
+//var redis = require ('redis');
+//var client = redis.createClient();
+//var util = require ('util');
+
+var client = require('redis').createClient(process.env.REDIS_URL);
+var Redis = require('ioredis');
+var redis = new Redis(process.env.REDIS_URL);
 
 var app = express();
 var bodyParser = require ('body-parser');
