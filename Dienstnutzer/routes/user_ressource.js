@@ -541,6 +541,7 @@ app.post('/:UserId/Trade', function(req, res) {
             //Zeige dem Client mit Statuscode 201 Erfolg beim anlegen an, und Schreibe JSON in den Body
             res.json(TradeObj).status(201).end();
         });
+      }
 });
 
 module.exports = app;

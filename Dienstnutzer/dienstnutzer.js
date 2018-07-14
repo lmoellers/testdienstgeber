@@ -47,42 +47,50 @@ app.route('/startdemo').get(function(req, res) {
     var user1Obj={
         'id' : 1,
         'Name': 'Hanna',
+        'Nickname': 'hanna2',
         'isActive': 1
     };
 
     var user2Obj={
         'id' : 2,
         'Name': 'Sebastian',
+        'Nickname': 'seb33',
         'isActive': 1
     };
     var user3Obj={
         'id' : 3,
-        'Name': 'Alice'
+        'Name': 'Alice',
+        'Nickname': 'alicewunderland',
         'isActive': 1
     };
     var user4Obj={
         'id' : 4,
         'Name': 'Tom',
+        'Nickname': 'tom81',
         'isActive': 1
     };
     var user5Obj={
         'id' : 5,
         'Name': 'Jan',
+        'Nickname': 'jan12',
         'isActive': 1
     };
     var user6Obj={
         'id' : 6,
         'Name': 'Anna',
+        'Nickname': 'ann',
         'isActive': 1
     };
     var user7Obj={
         'id' : 7,
         'Name': 'Chris',
+        'Nickname': 'Starlord',
         'isActive': 1
     };
     var user8Obj={
         'id' : 8,
         'Name': 'Markus',
+        'Nickname': 'markus95',
         'isActive': 1
     };
 
