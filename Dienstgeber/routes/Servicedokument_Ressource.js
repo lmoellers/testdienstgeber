@@ -20,10 +20,9 @@ app.get('/',function(req,res){
     */
 
     var service={
-        "BenutzerCollection":"http://localhost:3000/Benutzer",
-        "AustragungsortCollection":"http://localhost:3000/Austragungsort",
-        "MatchCollection":"http://localhost:3000/Match",
-        "TurnierCollection":"http://localhost:3000/Turnier",
+        "UserCollection":"http://localhost:3000/User",
+        "StandortCollection":"http://localhost:3000/Standort",
+        "TradeCollection":"http://localhost:3000/Trade",
     }
 
     res.status(200).json(service).end();
