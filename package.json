@@ -1,0 +1,27 @@
+{
+  "name": "testdienstgeber",
+  "version": "0.0.1",
+  "description": "Test für WBA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dienstgeber.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmoellers/testdienstgeber.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "ioredis": "^3.2.2",
+    "json-parser": "^1.1.5",
+    "redis": "^2.8.0"
+  },
+  "author": "Laura Möllers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lmoellers/testdienstgeber/issues"
+  },
+  "homepage": "https://github.com/lmoellers/testdienstgeber#readme"
+}

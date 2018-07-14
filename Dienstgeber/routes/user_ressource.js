@@ -202,7 +202,7 @@ app.post('/', function(req, res) {
             var userObj={
                 'id' : id,
                 'Name': User.Name,
-                'Nickname': User.Nickname;
+                'Nickname': User.Nickname,
                 'isActive': 1
             };
 
