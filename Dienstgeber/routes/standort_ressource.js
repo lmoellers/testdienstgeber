@@ -1,4 +1,7 @@
-var app = express.Router();
+var express = require('express');
+
+var app = express();
+//var app = express.Router();
 
 //Liefert eine Collection aller Austragungsorte im System
 app.get('/',function(req,res){

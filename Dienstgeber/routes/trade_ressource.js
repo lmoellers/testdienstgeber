@@ -1,4 +1,7 @@
-var app = express.Router();
+var express = require('express');
+
+var app = express();
+//var app = express.Router();
 
 //Liefert eine Collection aller Matches
 app.get('/',function(req,res){

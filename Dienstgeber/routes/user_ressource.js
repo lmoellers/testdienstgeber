@@ -1,4 +1,6 @@
-var app = express.Router();
+var express = require('express');
+
+var app = express();
 
 //Liefert eine Collection aller existierenden Benutzer
 //Hier werden ganze Repräsentationen übertragen , man hätte auch lediglich Links übertragen können .

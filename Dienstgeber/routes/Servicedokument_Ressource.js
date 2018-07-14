@@ -1,5 +1,7 @@
+var express = require('express');
 
-var app = express.Router();
+var app = express();
+//var app = express.Router();
 
 //Liefert das Servicedokument,  dass die möglichen Interaktionsmöglichkeiten mit dem Service zeigt
 //Damit diese Ressource im Kontext von automatischer Service-Discovery und dem Ziel generischer Clients von Bedeutung ist
