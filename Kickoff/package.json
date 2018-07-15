@@ -1,0 +1,14 @@
+{
+"name": "wba2ss18",
+"version": "0.0.1",
+"description": "kickoffaufgaben"
+"dependencies": {
+"chalk":"2.3.2"
+},
+"repository":{
+"type":"git",
+"url":"https://github.com/miwiedmann/WBA2SS18wiedmannmoellerssteffen.git"
+},
+"keywords": "kickoff",
+"license": "ISC"
+}

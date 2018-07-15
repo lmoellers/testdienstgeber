@@ -1,33 +1,28 @@
 {
   "name": "dienstgeber",
   "version": "0.0.1",
-  "description": "dienstgeber ",
+  "description": "WBA2 Dienstgeber",
   "main": "dienstgeber.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie": "^0.3.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "faye": "^1.2.4",
+    "ioredis": "^3.2.2",
+    "json-parser": "^1.1.5",
+    "redis": "^2.8.0",
+    "redis-commands": "^1.3.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miwiedmann/WBA2SS18wiedmannmoellerssteffen.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dienstgeber.js"
   },
-  "engines": {
-    "node": "10.4.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lmoellers/testdienstgeber.git"
-  },
   "author": "Laura Möllers",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lmoellers/testdienstgeber/issues"
-  },
-  "homepage": "https://github.com/lmoellers/testdienstgeber#readme",
-  "dependencies": {
-    "app": "^0.1.0",
-    "async": "^2.6.1",
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "faye": "^1.2.4",
-    "moment": "^2.22.2",
-    "redis": "^2.8.0",
-    "util": "^0.11.0"
-  }
+  "license": "ISC"
 }
