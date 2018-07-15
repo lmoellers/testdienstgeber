@@ -88,13 +88,15 @@ app.delete('/users/:id', function (req, res) {
 });
 
 // Aktualisiert einen User
-app.put('/users/:id/:name', jsonParser, function (req, res) {
+app.put('/users/:id/:name/:nickname/:wohnort', jsonParser, function (req, res) {
 
     var neu = req.body;
     neu.id = req.params.id;
     neu.name = req.params.name;
+    neu.nickname = req.params.nickname;
+    neu.wohnort = req.params.wohnort;
 
-    client.set('user:' + req.params.id + req.params.name, JSON.stringify(neu), function (err, rep) {
+    client.set('user:' + req.params.id + req.params.name + req.params.nickname + req.params.wohnort, JSON.stringify(neu), function (err, rep) {
         res.status(200).type('json').send(neu);
     });
 
@@ -135,7 +137,7 @@ app.get('/trade', function (req, res) {
                 trades.push(JSON.parse(val));
             });
             trades = trades.map(function (trade) {
-                return {id: trade.id, name: trade.name, nickname: trade.beschreibung};
+                return {id: trade.id, name: trade.name, beschreibung: trade.beschreibung};
             });
             res.json(trades);
         });
