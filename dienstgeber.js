@@ -160,7 +160,7 @@ app.get('/trade/:id/:name/:beschreibung', function (req, res) {
 app.delete('/trade/:id/:name/:beschreibung', function (req, res) {
 
     client.get('trade:' + req.params.id + req.params.name + req.params.beschreibung, function (err, rep) {
-        var trade = JSON.parse(rep);
+        //var trade = JSON.parse(rep);
         // client.get('user:' + trade.userID, function (err, rep) {
         //     var user = JSON.parse(rep);
         //     user.trade = user.trade.filter((value) >= value !== trade.id);
