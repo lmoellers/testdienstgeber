@@ -64,38 +64,6 @@ app.get('/users/:id/:name', function (req, res) {
     });
 });
 
-// user werden alle ausgegeben, dann wird name und pw gefiltert, sobald sich ein user registriert hat wird er in der db gespeichert, filter funk überprüft ob ein user verfügbar ist (name = name, pw = pw )
-app.get('/users/:name/:passwort', function (req, res){
-
-    client.keys('user:*', function (err, rep) {
-
-        var users = [];
-
-
-        if (rep.length === 0) {
-            res.json({exist:"no"});
-            return;
-        }
-        client.mget(rep, function (err, rep) {
-
-            rep.forEach(function (val) {
-                users.push(JSON.parse(val));
-            });
-            users = users.map(function (user) {
-                return {name: user.name, passwort: user.passwort};
-            });
-
-            users = users.filter((user) >= user.name === req.params.name && user.passwort === req.params.passwort)
-
-            if (users.length === 1){
-                res.json({exist:"yes"});
-            } else{
-                res.json({exist:"no"});
-            }
-
-        });
-    });
-});
 
 // Löscht einen Benutzer
 app.delete('/users/:id', function (req, res) {
@@ -175,7 +143,7 @@ app.get('/trade', function (req, res) {
 });
 
 // Einen Trade abfragen
-app.get('/trade/:id/:name/:beschreibung', function (req, res) {
+app.get('/trade/:id', function (req, res) {
 
     client.get('trade:' + req.params.id + req.params.name + req.params.beschreibung, function (err, rep) {
         if (rep) {
@@ -212,7 +180,6 @@ app.delete('/trade/:id', function (req, res) {
 app.put('/trade/:id/:name', jsonParser, function (req, res) {
 
     var neu = req.body;
-    neu.id = req.params.id;
     neu.name = req.params.name;
 
     client.set('trade:' + req.params.id + req.params.name, JSON.stringify(neu), function (err, rep) {
