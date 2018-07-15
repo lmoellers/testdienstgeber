@@ -1,14 +1,19 @@
 var express = require('express');
-var redis = require('redis');
-var client = redis.createClient();
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+//var redis = require('redis');
 
-// nur zum debug
-var util = require('util');
+var client = require('redis').createClient(process.env.REDIS_URL);
+var Redis = require('ioredis');
+var redis = new Redis(process.env.REDIS_URL);
 
 var app = express();
-var bodyParser = require('body-parser');
 
-app.set('port', process.env.PORT || 3000);
+//app.set('port', process.env.PORT || 3000);
+const settings = {
+  port: process.env.PORT || 3000,
+  datafile: "./testdata.json"
+};
 
 app.use(bodyParser.json());
 
@@ -26,6 +31,9 @@ app.use('/',require('./routes/servicedokument_ressource'));
 // });
 
 // Start the server
-app.listen(app.get('port'), function () {
-  console.log('Server is listening on port ' + app.get('port'));
+// app.listen(app.get('port', function () {
+//   console.log('Server is listening on port ' + app.get('port'));
+// });
+app.listen(settings.port, function () {
+  console.log('Server is listening on port ' + settings.port +".");
 });
