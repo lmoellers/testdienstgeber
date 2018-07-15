@@ -22,10 +22,6 @@ app.post('/users', function (req, res) {
     var newUser = req.body;
     client.incr('user:', function (err, rep) {
       newUser.id = rep;
-      newUser.name = name;
-      newUser.notepad = [];
-      newUser.bewertung = [];
-      newUser.trade = [];
         client.set('user:' + newUser.id, JSON.stringify(newUser), function (err, rep) {
             res.json(newUser);
 
@@ -145,9 +141,9 @@ app.post('/trade', function (req, res) {
     var newTrade = req.body;
     client.incr('trade:', function (err, rep) {
       newTrade.id = rep;
-      // newTrade.name = name;
-      // newTrade.beschreibung = beschreibung;
-        client.set('trade:' + newTrade.id, JSON.stringify(newTrade), function (err, rep) {
+      //newTrade.name = req.params.name;
+
+        client.set('trade:' + rep, JSON.stringify(newTrade), function (err, rep) {
             res.json(newTrade);
 
         });
