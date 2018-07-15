@@ -143,7 +143,7 @@ app.get('/trade', function (req, res) {
 });
 
 // Einen Trade abfragen
-app.get('/trade/:id', function (req, res) {
+app.get('/trade/:id/:name/:beschreibung', function (req, res) {
 
     client.get('trade:' + req.params.id + req.params.name + req.params.beschreibung, function (err, rep) {
         if (rep) {
@@ -181,8 +181,9 @@ app.put('/trade/:id/:name', jsonParser, function (req, res) {
 
     var neu = req.body;
     neu.name = req.params.name;
+    neu.beschreibung = req.params.beschreibung;
 
-    client.set('trade:' + req.params.id + req.params.name, JSON.stringify(neu), function (err, rep) {
+    client.set('trade:' + req.params.id + req.params.name + req.params.beschreibung , JSON.stringify(neu), function (err, rep) {
         res.status(200).type('json').send(neu);
     });
 
