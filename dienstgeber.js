@@ -140,8 +140,9 @@ app.put('/users/:id/:name', jsonParser, function (req, res) {
 app.post('/trade', function (req, res) {
     var newTrade = req.body;
     client.incr('trade:', function (err, rep) {
+      var newTrade = req.body;
       newTrade.id = rep;
-      //newTrade.name = req.params.name;
+      //rep = req.params.id;
 
         client.set('trade:' + rep, JSON.stringify(newTrade), function (err, rep) {
             res.json(newTrade);
