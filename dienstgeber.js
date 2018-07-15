@@ -177,7 +177,7 @@ app.delete('/trade/:id', function (req, res) {
 });
 
 // Aktualisiert einen Trade
-app.put('/trade/:id/:name', jsonParser, function (req, res) {
+app.put('/trade/:id/:name/:beschreibung', jsonParser, function (req, res) {
 
     var neu = req.body;
     neu.name = req.params.name;
