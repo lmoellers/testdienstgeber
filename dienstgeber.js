@@ -160,11 +160,11 @@ app.get('/trade/:id/:name/:beschreibung', function (req, res) {
 app.delete('/trade/:id/:name/:beschreibung', function (req, res) {
 
     client.get('trade:' + req.params.id + req.params.name + req.params.beschreibung, function (err, rep) {
-        //var trade = JSON.parse(rep);
-        // client.get('user:' + trade.userID, function (err, rep) {
-        //     var user = JSON.parse(rep);
-        //     user.trade = user.trade.filter((value) >= value !== trade.id);
-            // client.set('user:' + user.id, JSON.stringify(user), function (err, rep) {
+        var trade = JSON.parse(rep);
+         client.get('user:' + trade.userID, function (err, rep) {
+             var user = JSON.parse(rep);
+             user.trade = user.trade.filter((value) >= value !== trade.id);
+             client.set('user:' + user.id, JSON.stringify(user), function (err, rep) {
                 client.del('trade:' req.params.id + req.params.name + req.params.beschreibung, function (err, rep) {
                     if (rep === 1) {
                         res.status(200).type('text').send('Erfolgreich den Trade mit der ID ' + req.params.id + ' gelöscht');
@@ -172,8 +172,8 @@ app.delete('/trade/:id/:name/:beschreibung', function (req, res) {
                         res.status(404).type('text').send('Der Trade mit der ID ' + req.params.id + ' existiert nicht');
                     }
                 });
-            //});
-        //});
+            });
+        });
     });
 });
 
