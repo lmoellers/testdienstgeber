@@ -112,7 +112,6 @@ app.post('/trade', function (req, res) {
     client.incr('trade:', function (err, rep) {
       var newTrade = req.body;
       newTrade.id = rep;
-      //rep = req.params.id;
 
         client.set('trade:' + rep, JSON.stringify(newTrade), function (err, rep) {
             res.json(newTrade);
@@ -182,6 +181,7 @@ app.delete('/trade/:id', function (req, res) {
 app.put('/trade/:id/:name/:beschreibung', jsonParser, function (req, res) {
 
     var neu = req.body;
+    neu.id = req.params.id;
     neu.name = req.params.name;
     neu.beschreibung = req.params.beschreibung;
 
