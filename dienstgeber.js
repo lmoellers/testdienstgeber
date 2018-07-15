@@ -161,11 +161,11 @@ app.delete('/trade/:id', function (req, res) {
 
     client.get('trade:' + req.params.id, function (err, rep) {
         var trade = JSON.parse(rep);
-         client.get('user:' + trade.userID, function (err, rep) {
-             var user = JSON.parse(rep);
-             user.trade = user.trade.filter((value) >= value !== trade.id);
-             client.set('user:' + user.id, JSON.stringify(user), function (err, rep) {
-                client.del('trade:' req.params.id, function (err, rep) {
+        client.get('user:' + trade.userID, function (err, rep) {
+            var user = JSON.parse(rep);
+            user.trade = user.trade.filter((value) >= value !== trade.id);
+            client.set('user:' + user.id, JSON.stringify(user), function (err, rep) {
+                client.del('trade:' + req.params.id, function (err, rep) {
                     if (rep === 1) {
                         res.status(200).type('text').send('Erfolgreich den Trade mit der ID ' + req.params.id + ' gelöscht');
                     } else {
@@ -220,7 +220,7 @@ app.get('/bewertung', function (req, res) {
                 bewertungen.push(JSON.parse(val));
             });
             bewertungen = bewertungen.map(function (bewertung) {
-                return {id: bewertung.id, name: bewertung.name, beschreibung: bewertung.beschreibung};
+                return {id: bewertung.id, name: bewertung.name, beschreibung: bewertung.bewertung};
             });
             res.json(bewertungen);
         });
@@ -261,14 +261,15 @@ app.delete('/bewertung/:id', function (req, res) {
     });
 });
 
-// Aktualisiert einen Trade
-app.put('/bewertung/:id/:name', jsonParser, function (req, res) {
+// Aktualisiert eine Bwertung
+app.put('/bewertung/:id/:name/:bewertung', jsonParser, function (req, res) {
 
     var neu = req.body;
     neu.id = req.params.id;
     neu.name = req.params.name;
+    neu.bewertung = req.params.bewertung;
 
-    client.set('bewertung:' + req.params.id + req.params.name, JSON.stringify(neu), function (err, rep) {
+    client.set('bewertung:' + req.params.id + req.params.name + req.params.bewertung, JSON.stringify(neu), function (err, rep) {
         res.status(200).type('json').send(neu);
     });
 
