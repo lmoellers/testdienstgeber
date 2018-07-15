@@ -136,7 +136,7 @@ app.get('/trade', function (req, res) {
                 trades.push(JSON.parse(val));
             });
             trades = trades.map(function (trade) {
-                return {id: trade.id, name: trade.name, beschreibung: trade.beschreibung};
+                return {id: trade.id, name: trade.name, user: trade.user, beschreibung: trade.beschreibung};
             });
             res.json(trades);
         });
@@ -144,9 +144,9 @@ app.get('/trade', function (req, res) {
 });
 
 // Einen Trade abfragen
-app.get('/trade/:id/:name/:beschreibung', function (req, res) {
+app.get('/trade/:id/:name/:user/:beschreibung', function (req, res) {
 
-    client.get('trade:' + req.params.id + req.params.name + req.params.beschreibung, function (err, rep) {
+    client.get('trade:' + req.params.id + req.params.name + req.params.user + req.params.beschreibung, function (err, rep) {
         if (rep) {
             res.type('json').send(rep);
         } else {
@@ -178,14 +178,15 @@ app.delete('/trade/:id', function (req, res) {
 });
 
 // Aktualisiert einen Trade
-app.put('/trade/:id/:name/:beschreibung', jsonParser, function (req, res) {
+app.put('/trade/:id/:name/:user/:beschreibung', jsonParser, function (req, res) {
 
     var neu = req.body;
     neu.id = req.params.id;
     neu.name = req.params.name;
+    neu.user = req.params.user;
     neu.beschreibung = req.params.beschreibung;
 
-    client.set('trade:' + req.params.id + req.params.name + req.params.beschreibung , JSON.stringify(neu), function (err, rep) {
+    client.set('trade:' + req.params.id + req.params.name+ req.params.user + req.params.beschreibung , JSON.stringify(neu), function (err, rep) {
         res.status(200).type('json').send(neu);
     });
 
@@ -220,17 +221,17 @@ app.get('/bewertung', function (req, res) {
                 bewertungen.push(JSON.parse(val));
             });
             bewertungen = bewertungen.map(function (bewertung) {
-                return {id: bewertung.id, name: bewertung.name, beschreibung: bewertung.bewertung};
+                return {id: bewertung.id, name: bewertung.name, user: bewertung.user, beschreibung: bewertung.bewertung};
             });
             res.json(bewertungen);
         });
     });
 });
 
-// Eine Beschreibung abfragen
-app.get('/bewertung/:id/:name/:beschreibung', function (req, res) {
+// Eine Bewertung abfragen
+app.get('/bewertung/:id/:name/:user/:beschreibung', function (req, res) {
 
-    client.get('trade:' + req.params.id + req.params.name + req.params.beschreibung, function (err, rep) {
+    client.get('bewertung:' + req.params.id + req.params.name + req.params.user + req.params.beschreibung, function (err, rep) {
         if (rep) {
             res.type('json').send(rep);
         } else {
@@ -262,14 +263,184 @@ app.delete('/bewertung/:id', function (req, res) {
 });
 
 // Aktualisiert eine Bwertung
-app.put('/bewertung/:id/:name/:bewertung', jsonParser, function (req, res) {
+app.put('/bewertung/:id/:name/:user/:bewertung', jsonParser, function (req, res) {
 
     var neu = req.body;
     neu.id = req.params.id;
     neu.name = req.params.name;
+    neu.user = req.params.user;
     neu.bewertung = req.params.bewertung;
 
-    client.set('bewertung:' + req.params.id + req.params.name + req.params.bewertung, JSON.stringify(neu), function (err, rep) {
+    client.set('bewertung:' + req.params.id + req.params.name + req.params.user + req.params.bewertung, JSON.stringify(neu), function (err, rep) {
+        res.status(200).type('json').send(neu);
+    });
+
+});
+
+// Message erstellen
+
+app.post('/messages', function (req, res) {
+    var newMessage = req.body;
+    client.incr('message:', function (err, rep) {
+      newMessage.id = rep;
+        client.set('message:' + newMessage.id, JSON.stringify(newMessage), function (err, rep) {
+            res.json(newMessage);
+
+        });
+    });
+});
+
+// Alle auflisten
+app.get('/message', function (req, res) {
+    client.keys('message:*', function (err, rep) {
+
+        var messages = [];
+
+        if (rep.length === 0) {
+            res.json(messages);
+            return;
+        }
+        client.mget(rep, function (err, rep) {
+
+            rep.forEach(function (val) {
+                messages.push(JSON.parse(val));
+            });
+            messages = messages.map(function (message) {
+                return {titel: message.titel, user: message.user, nachricht: message.nachricht};
+            });
+            res.json(bewertungen);
+        });
+    });
+});
+
+// Eine message abfragen
+app.get('/message/:id/:titel/:user/:nachricht', function (req, res) {
+
+    client.get('message:' + req.params.id + req.params.titel + req.params.user + req.params.nachricht, function (err, rep) {
+        if (rep) {
+            res.type('json').send(rep);
+        } else {
+            res.status(404).type('text').send('Die Bewertung mit der ID ' + req.params.id + ' existiert nicht');
+        }
+    });
+});
+
+
+// Löscht eine Message
+app.delete('/message/:id', function (req, res) {
+
+    client.get('message:' + req.params.id, function (err, rep) {
+        var trade = JSON.parse(rep);
+        client.get('user:' + message.userID, function (err, rep) {
+            var user = JSON.parse(rep);
+            user.message = user.message.filter((value) >= value !== message.id);
+            client.set('user:' + user.id, JSON.stringify(user), function (err, rep) {
+                client.del('message:' + req.params.id, function (err, rep) {
+                    if (rep === 1) {
+                        res.status(200).type('text').send('Erfolgreich die Message mit der ID ' + req.params.id + ' gelöscht');
+                    } else {
+                        res.status(404).type('text').send('Die Message mit der ID ' + req.params.id + ' existiert nicht');
+                    }
+                });
+            });
+        });
+    });
+});
+
+// Aktualisiert ein Notepad
+app.put('/message/:id/:titel/:user/:nachricht', jsonParser, function (req, res) {
+
+    var neu = req.body;
+    neu.id = req.params.id;
+    neu.titel = req.params.titel;
+    neu.user = req.params.user;
+    neu.nachricht = req.params.nachricht;
+
+    client.set('message:' + req.params.id + req.params.titel + req.params.user + req.params.nachricht, JSON.stringify(neu), function (err, rep) {
+        res.status(200).type('json').send(neu);
+    });
+
+});
+
+//Notepad erstellen
+app.post('/notepad', function (req, res) {
+    var newNotepad = req.body;
+    client.incr('notepad:', function (err, rep) {
+      newNotepad.id = rep;
+        client.set('notepad:' + newNotepad.id, JSON.stringify(newNotepad), function (err, rep) {
+            res.json(newNotepad);
+
+        });
+    });
+});
+
+// Alle auflisten
+app.get('/notepad', function (req, res) {
+    client.keys('notepad:*', function (err, rep) {
+
+        var notepads = [];
+
+        if (rep.length === 0) {
+            res.json(notepads);
+            return;
+        }
+        client.mget(rep, function (err, rep) {
+
+            rep.forEach(function (val) {
+                notepads.push(JSON.parse(val));
+            });
+            notepads = notepads.map(function (notepad) {
+                return {titel: notepad.titel, user: notepad.user, notiz: notepad.notiz};
+            });
+            res.json(notepads);
+        });
+    });
+});
+
+// Eine Notepad abfragen
+app.get('/notepad/:id/:titel/:user/:notiz', function (req, res) {
+
+    client.get('notepad' + req.params.id + req.params.titel + req.params.user + req.params.notiz, function (err, rep) {
+        if (rep) {
+            res.type('json').send(rep);
+        } else {
+            res.status(404).type('text').send('Das Notepad mit der ID ' + req.params.id + ' existiert nicht');
+        }
+    });
+});
+
+
+// Löscht ein Notepad
+app.delete('/notepad/:id', function (req, res) {
+
+    client.get('notepad:' + req.params.id, function (err, rep) {
+        var trade = JSON.parse(rep);
+        client.get('user:' + notepad.userID, function (err, rep) {
+            var user = JSON.parse(rep);
+            user.notepad = user.notepad.filter((value) >= value !== notepad.id);
+            client.set('user:' + user.id, JSON.stringify(user), function (err, rep) {
+                client.del('notepad:' + req.params.id, function (err, rep) {
+                    if (rep === 1) {
+                        res.status(200).type('text').send('Erfolgreich das Notepad mit der ID ' + req.params.id + ' gelöscht');
+                    } else {
+                        res.status(404).type('text').send('Das Notepad mit der ID ' + req.params.id + ' existiert nicht');
+                    }
+                });
+            });
+        });
+    });
+});
+
+// Aktualisiert ein Notepad
+app.put('/notepad/:id/:titel/:user/:notiz', jsonParser, function (req, res) {
+
+    var neu = req.body;
+    neu.id = req.params.id;
+    neu.titel = req.params.titel;
+    neu.user = req.params.user;
+    neu.notiz = req.params.notiz;
+
+    client.set('notepad:' + req.params.id + req.params.titel + req.params.user + req.params.notiz, JSON.stringify(neu), function (err, rep) {
         res.status(200).type('json').send(neu);
     });
 
