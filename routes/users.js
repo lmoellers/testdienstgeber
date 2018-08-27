@@ -11,31 +11,31 @@ router.get('/', function(req, res, next){
   res.render('index');
 });
 
-// router.get('/get-data', function(req, res, next){
-//   var resultArray = [];
-//   mongo.connect(url, function(err, db){
-//     assert.equal(null, err);
-//     var cursor = db.collection('user-data').find();
-//     newUser.forEach(function(doc, err){
-//       assert.equal(null, err);
-//       resultArray.push(doc);
-//     }, function(){
-//       db.close();
-//       res.render('index', {items: resultArray});
-//     });
-//   });
-// });
-
 router.get('/get-data', function(req, res, next){
+  var resultArray = [];
   mongo.connect(url, function(err, db){
-    if (err) throw err;
-    var cursor = db.collection('user-data').find({}).toArray(function(err, result){
-      if(err) throw err;
-      console.log(result);
+    assert.equal(null, err);
+    var cursor = db.collection('user-data').find();
+    newUser.forEach(function(doc, err){
+      assert.equal(null, err);
+      resultArray.push(doc);
+    }, function(){
       db.close();
-      });
+      res.render('index', {items: resultArray});
     });
   });
+});
+
+// router.get('/get-data', function(req, res, next){
+//   mongo.connect(url, function(err, db){
+//     if (err) throw err;
+//     var cursor = db.collection('user-data').find({}).toArray(function(err, result){
+//       if(err) throw err;
+//       console.log(result);
+//       db.close();
+//       });
+//     });
+//   });
 
 
 //Neu einfügen in die Datenbank
