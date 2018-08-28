@@ -9,8 +9,6 @@ var url = 'mongodb://localhost:27017/test';
 
 router.get('/', function(req, res, next){
   //res.render('index');
-  res.send({type:'GET'});
-  res.send(console.log('GET Rückgabe'));
 });
 
 router.get('/get-data', function(req, res, next){
@@ -24,6 +22,7 @@ router.get('/get-data', function(req, res, next){
     }, function(){
       db.close();
       res.render('index', {items: resultArray});
+      res.status(404).type('text').send('Keine Daten vorhanden!');
     });
   });
 });
