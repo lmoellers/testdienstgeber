@@ -67,5 +67,5 @@ router.post('/delete', function(req, res, next){
 
 });
 
-
+console.log('Alles super!');
 module.exports = router;
