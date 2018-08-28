@@ -8,7 +8,9 @@ var url = 'mongodb://localhost:27017/test';
 /*GET Users*/
 
 router.get('/', function(req, res, next){
-  res.render('index');
+  //res.render('index');
+  res.send({type:'GET'});
+  res.send(console.log('GET Rückgabe'));
 });
 
 router.get('/get-data', function(req, res, next){
@@ -25,18 +27,6 @@ router.get('/get-data', function(req, res, next){
     });
   });
 });
-
-// router.get('/get-data', function(req, res, next){
-//   mongo.connect(url, function(err, db){
-//     if (err) throw err;
-//     var cursor = db.collection('user-data').find({}).toArray(function(err, result){
-//       if(err) throw err;
-//       console.log(result);
-//       db.close();
-//       });
-//     });
-//   });
-
 
 //Neu einfügen in die Datenbank
 router.post('/insert', function(req, res, next){
