@@ -65,7 +65,7 @@ router.put('/get-user-data/:id', function(req, res, next){
   mongo.connect(url, {useNewUrlParser: true}, function (err, db){
     assert.equal(null, err);
     var dbo = db.db("heroku_17dz6kfv");
-    dbo.collection("user-data").updateOne({"_id": objectID(id)}, {$set: userItem}, function(err, result){
+    dbo.user-data.updateOne({"_id": objectID(id)}, {$set: userItem}, function(err, result){
       console.log("User updated!");
       db.close();
     });
@@ -81,7 +81,7 @@ router.delete('/get-user-data/:id', function(req, res, next){
   var id = req.params.id;
   mongo.connect(url, {useNewUrlParser: true}, function (err, db){
     assert.equal(null, err);
-    var dbo = db.db("heroku_17dz6kfv");
+    var dbo = db.db("heroku_17dz6kfvs");
     dbo.collection("user-data").deleteOne({"_id": objectID(id)}, function(err, result){
       console.log("User delete!");
       db.close();
