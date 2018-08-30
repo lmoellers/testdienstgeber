@@ -4,7 +4,8 @@ var mongo = require('mongodb').MongoClient;
 var objectID = require('mongodb').ObjectID;
 var assert = require('assert');
 
-var url = 'mongodb://localhost:27017/test';
+//var url = 'mongodb://localhost:27017/test';
+var url ='mongodb://<heroku_17dz6kfv>:<417mango!>@ds133252.mlab.com:33252/heroku_17dz6kfv'
 
 /*GET Users*/
 
@@ -17,7 +18,7 @@ router.get('/get-user-data', function(req, res, next){
   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
     //res.send({type: 'GET'});
     assert.equal(null, err);
-    var dbo = db.db("test");
+    var dbo = db.db("heroku_17dz6kfv");
     dbo.collection("user-data").find({}).toArray(function(err, allUser) {
       console.log(allUser);
       db.close();
@@ -31,7 +32,7 @@ router.get('/get-user-data', function(req, res, next){
 router.post('/get-user-data', function(req, res, next){
   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
     assert.equal(null, err);
-    var dbo = db.db("test");
+    var dbo = db.db("heroku_17dz6kfv");
     var userItem = {
      name: req.body.name,
      alter: req.body.alter,
@@ -63,7 +64,7 @@ router.put('/get-user-data/:id', function(req, res, next){
   var id = req.params.id;
   mongo.connect(url, {useNewUrlParser: true}, function (err, db){
     assert.equal(null, err);
-    var dbo = db.db("test");
+    var dbo = db.db("heroku_17dz6kfv");
     dbo.collection("user-data").updateOne({"_id": objectID(id)}, {$set: userItem}, function(err, result){
       console.log("User updated!");
       db.close();
@@ -80,7 +81,7 @@ router.delete('/get-user-data/:id', function(req, res, next){
   var id = req.params.id;
   mongo.connect(url, {useNewUrlParser: true}, function (err, db){
     assert.equal(null, err);
-    var dbo = db.db("test");
+    var dbo = db.db("heroku_17dz6kfv");
     dbo.collection("user-data").deleteOne({"_id": objectID(id)}, function(err, result){
       console.log("User delete!");
       db.close();
