@@ -14,7 +14,7 @@ router.get('/', function(req, res, next){
 });
 
 //Alle User ausgeben
-router.get('/user-data', function(req, res, next){
+router.get('/get-user-data/{heroku_17dz6kfv}', function(req, res, next){
   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
     //res.send({type: 'GET'});
     assert.equal(null, err);
@@ -25,7 +25,6 @@ router.get('/user-data', function(req, res, next){
     });
   });
   res.send(allUser);
-  res.json(allUser);
 });
 
 //Neuen User einfügen
