@@ -18,8 +18,8 @@ router.get('/get-user-data', function(req, res, next){
   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
     //res.send({type: 'GET'});
     assert.equal(null, err);
-    var dbo = db.db("heroku_17dz6kfv");
-    dbo.user-data.find({}).toArray(function(err, allUser) {
+    //var dbo = db.db("heroku_17dz6kfv");
+    db.user-data.find({}).toArray(function(err, allUser) {
       console.log(allUser);
       db.close();
     });
