@@ -14,7 +14,7 @@ router.get('/', function(req, res, next){
 });
 
 //Alle User ausgeben
-router.get('/get-user-data', function(req, res, next){
+router.get('/user-data', function(req, res, next){
   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
     //res.send({type: 'GET'});
     assert.equal(null, err);
