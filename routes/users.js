@@ -26,6 +26,7 @@ router.get('/get-user-data', function(req, res, next){
   });
   res.send(allUser);
   res.json(allUser);
+  return(allUser);
 });
 
 //Neuen User einfügen
