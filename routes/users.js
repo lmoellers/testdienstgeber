@@ -14,22 +14,44 @@ router.get('/', function(req, res, next){
 });
 
 //Alle User ausgeben
+// router.get('/get-user-data', function(req, res, next){
+//   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
+//     //res.send({type: 'GET'});
+//     assert.equal(null, err);
+//     var dbo = db.db("heroku_17dz6kfv");
+//     dbo.collection("user-data").find({}).toArray(function(err, allUser) {
+//       var stream = collection("user-data").find({}).stream();
+//       stream.on("Alle User: ", function(allUser){});
+//       stream.on("Alle User geladen.", function(){});
+//
+//       console.log(allUser);
+//       db.close();
+//     });
+//   });
+//   res.send(allUser);
+// });
 router.get('/get-user-data', function(req, res, next){
   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
-    //res.send({type: 'GET'});
+    var resultArray = [];
     assert.equal(null, err);
     var dbo = db.db("heroku_17dz6kfv");
-    dbo.collection("user-data").find({}).toArray(function(err, allUser) {
-      var stream = collection("user-data").find({}).stream();
-      stream.on("Alle User: ", function(allUser){});
-      stream.on("Alle User geladen.", function(){});
-
-      console.log(allUser);
+    var cursor = dbo.collection("user-data").find();
+      cursor.forEach(function(doc, err){
+        assert.equal(null, err);
+        resultArray.push(doc);
+      }, function(){
+      //stream.on("Alle User: ", function(allUser){});
+      //stream.on("Alle User geladen.", function(){});
+      //console.log(allUser);
       db.close();
+      res.render('index', {user: resultArray});
     });
-  });
-  res.send(allUser);
+    });
+  //res.send(allUser);
 });
+
+
+
 
 //Neuen User einfügen
 router.post('/get-user-data', function(req, res, next){
