@@ -14,12 +14,16 @@ router.get('/', function(req, res, next){
 });
 
 //Alle User ausgeben
-router.get('/get-user-data/{heroku_17dz6kfv}', function(req, res, next){
+router.get('/get-user-data', function(req, res, next){
   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
     //res.send({type: 'GET'});
     assert.equal(null, err);
     var dbo = db.db("heroku_17dz6kfv");
     dbo.collection("user-data").find({}).toArray(function(err, allUser) {
+      var stream = collection("user-data").find({}).stream();
+      stream.on("Alle User: ", function(allUser){});
+      stream.on("Alle User geladen.", function(){});
+
       console.log(allUser);
       db.close();
     });
