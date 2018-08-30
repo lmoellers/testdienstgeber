@@ -5,7 +5,7 @@ var objectID = require('mongodb').ObjectID;
 var assert = require('assert');
 
 //var url = 'mongodb://localhost:27017/test';
-var url ='mongodb://<heroku_17dz6kfv>:<417mango!>@ds133252.mlab.com:33252/heroku_17dz6kfv'
+var url ='mongodb://heroku_17dz6kfv:417mango!@ds133252.mlab.com:33252/heroku_17dz6kfv'
 
 /*GET Users*/
 
@@ -18,15 +18,14 @@ router.get('/get-user-data', function(req, res, next){
   mongo.connect(url, { useNewUrlParser: true }, function(err, db){
     //res.send({type: 'GET'});
     assert.equal(null, err);
-    //var dbo = db.db("heroku_17dz6kfv");
-    db.user-data.find({}).toArray(function(err, allUser) {
+    var dbo = db.db("heroku_17dz6kfv");
+    dbo.collection("user-data").find({}).toArray(function(err, allUser) {
       console.log(allUser);
       db.close();
     });
   });
   res.send(allUser);
   res.json(allUser);
-  return(allUser);
 });
 
 //Neuen User einfügen
