@@ -19,7 +19,7 @@ router.get('/get-user-data', function(req, res, next){
     //res.send({type: 'GET'});
     assert.equal(null, err);
     var dbo = db.db("heroku_17dz6kfv");
-    dbo.collection("user-data").find({}).toArray(function(err, allUser) {
+    dbo.user-data.find({}).toArray(function(err, allUser) {
       console.log(allUser);
       db.close();
     });
