@@ -21,11 +21,9 @@ router.get('/get-user-data', function(req, res, next){
     dbo.collection("user-data").find({}).toArray(function(err, allUser) {
       console.log(allUser);
       db.close();
-      res.setHeader("Content-Type", "application/json");
-      res.send({allUser});
-      res.end();
     });
   });
+  res.send(allUser);
 });
 
 //Neuen User einfügen
