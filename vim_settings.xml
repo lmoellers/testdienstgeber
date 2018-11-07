@@ -1,0 +1,130 @@
+<application>
+  <component name="VimSettings">
+    <state version="4" enabled="true" />
+    <globalmarks />
+    <filemarks>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/App.java" timestamp="1528186747342">
+        <mark key="[" line="27" column="8" />
+      </file>
+      <file name="/Dummy.txt" timestamp="1541615356346">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/AP 2/src/Actor.java" timestamp="1524037695329">
+        <mark key="[" line="7" column="18" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/model/Trainingseinheit.java" timestamp="1528194567607">
+        <mark key="'" line="83" column="52" />
+        <mark key="[" line="74" column="23" />
+        <mark key="]" line="91" column="8" />
+        <mark key="." line="91" column="8" />
+      </file>
+      <file name="/a.dummy" timestamp="1528797968139">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/AP 2/Praktikum/AP2 Praktikum 2/src/model/Trainingsprogramm.java" timestamp="1528812992684">
+        <mark key="[" line="7" column="28" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/model/Trainingsziel.java" timestamp="1528194176966">
+        <mark key="[" line="7" column="0" />
+        <mark key="]" line="2" column="3" />
+        <mark key="." line="2" column="3" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/AP 2/Praktikum/AP2 Praktikum 2/src/App.java" timestamp="1530621975654">
+        <mark key="[" line="27" column="91" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/Muskelgruppe.java" timestamp="1524562251029">
+        <mark key="[" line="0" column="26" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/model/TrainingseinheitmitZiel.java" timestamp="1528194851526">
+        <mark key="[" line="32" column="0" />
+      </file>
+      <file name="/JavaScript File.txt.ft" timestamp="1523354213791">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/AP 2/src/App.java" timestamp="1524034356929">
+        <mark key="[" line="36" column="0" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/model/Fitnessgeraet.java" timestamp="1528048818897">
+        <mark key="[" line="30" column="36" />
+        <mark key="]" line="30" column="37" />
+        <mark key="." line="30" column="37" />
+      </file>
+      <file name="$USER_HOME$/Studium/7. Semester/EIS/Prototyp/src/model/chatbot.java" timestamp="1541612147827">
+        <mark key="'" line="37" column="0" />
+        <mark key="[" line="90" column="22" />
+        <mark key="]" line="90" column="22" />
+        <mark key="." line="90" column="22" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/WBA2/WBA2SS18wiedmannmoellerssteffen/Projekt/routes/Dienstgeber.js" timestamp="1529841979175">
+        <mark key="[" line="5" column="0" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/model/Trainingsprogramm.java" timestamp="1528194921188">
+        <mark key="[" line="43" column="39" />
+      </file>
+      <file name="/HTML File.txt.ft" timestamp="1523354209202">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/AP 2/Praktikum/AP2 Praktikum 2/src/model/DoubleLinkedList.java" timestamp="1528812106561">
+        <mark key="[" line="108" column="8" />
+        <mark key="]" line="108" column="8" />
+        <mark key="." line="108" column="8" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/WBA2/WBA2SS18wiedmannmoellerssteffen/Projekt/Dienstgeber/package.json" timestamp="1529843758117">
+        <mark key="[" line="1" column="18" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/AP 2/src/Schauspieler.java" timestamp="1523987114955">
+        <mark key="[" line="0" column="10" />
+        <mark key="]" line="0" column="11" />
+        <mark key="." line="0" column="10" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/AP 2/Praktikum/AP2 Praktikum 2/src/model/Trainingsziel.java" timestamp="1528186171220">
+        <mark key="[" line="0" column="13" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/Fitnessgeraet.java" timestamp="1524564529253">
+        <mark key="[" line="0" column="27" />
+      </file>
+      <file name="/fragment.java" timestamp="1527584252572">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/model/Muskelgruppe.java" timestamp="1528048992477">
+        <mark key="i" line="19" column="27" />
+        <mark key="[" line="19" column="27" />
+      </file>
+    </filemarks>
+    <jumps>
+      <jump line="10" column="1" filename="$USER_HOME$/Studium/6. Semester/WBA2/Kickoff/package.json" />
+      <jump line="42" column="93" filename="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/App.java" />
+      <jump line="63" column="52" filename="$USER_HOME$/Studium/6. Semester/Praktikum 1/src/model/Trainingseinheit.java" />
+      <jump line="39" column="44" filename="$USER_HOME$/Studium/7. Semester/EIS/Prototyp/src/model/chatbot.java" />
+      <jump line="28" column="0" filename="$USER_HOME$/Studium/7. Semester/EIS/Prototyp/src/model/chatbot.java" />
+    </jumps>
+    <registers>
+      <register name="1" type="2">
+        <text encoding="base64">cHVibGljIGNsYXNzIGNoYXRib3Qgewo=</text>
+      </register>
+      <register name="&quot;" type="4">
+        <text>earching through chatbot for matches</text>
+      </register>
+      <register name="2" type="2">
+        <text encoding="base64">cHVibGljIGNsYXNzIFNjaGF1c3BpZWxlciB7Cg==</text>
+      </register>
+      <register name="-" type="4">
+        <text>earching through chatbot for matches</text>
+      </register>
+    </registers>
+    <search>
+      <last-dir>0</last-dir>
+      <show-last>false</show-last>
+    </search>
+    <history>
+      <history-search />
+      <history-cmd />
+      <history-expr />
+      <history-input />
+    </history>
+    <shortcut-conflicts />
+    <editor>
+      <key-repeat enabled="true" />
+    </editor>
+  </component>
+</application>
